@@ -68,3 +68,14 @@ def show_user(username):
 def logout():
     session.pop("username")
     return redirect("/")
+
+@app.route("/users/<username>/delete", methods=["POST"])
+def delete_user(username):
+    if "username" not in session or username != session["username"]:
+        return redirect("/")
+    user = User.query.filter_by(username=username).first()
+    db.session.delete(user)
+    db.session.commit()
+    session.pop("username")
+    return redirect("/")
+

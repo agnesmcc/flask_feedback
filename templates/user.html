@@ -9,4 +9,8 @@
 <p>{{ user.first_name }}</p>
 <p>{{ user.last_name }}</p>
 
+<form method="POST" action="/users/{{ user.username }}/delete">
+    <button type="submit" class="btn btn-danger">Delete User</button>
+</form>
+
 {% endblock %}
