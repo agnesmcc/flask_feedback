@@ -2,7 +2,11 @@
 
 {% block content %}
 
-<h1>Add Feedback</h1>
+{% if update %}
+    <h1>Edit Feedback</h1>
+{% else %}
+    <h1>Add Feedback</h1>
+{% endif %}
 
 <form method="POST">
     {{ form.hidden_tag() }}

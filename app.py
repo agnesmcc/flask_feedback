@@ -92,3 +92,16 @@ def add_feedback(username):
         db.session.commit()
         return redirect(f"/users/{username}")
     return render_template("feedback.html", form=form)  
+
+@app.route("/feedback/<feedback_id>/update", methods=["GET", "POST"])
+def update_feedback(feedback_id):
+    feedback = Feedback.query.get_or_404(feedback_id)
+    if "username" not in session or feedback.username != session["username"]:
+        return redirect("/")
+    form = FeedbackForm(obj=feedback)
+    if form.validate_on_submit():
+        feedback.title = form.title.data
+        feedback.content = form.content.data
+        db.session.commit()
+        return redirect(f"/users/{feedback.username}")
+    return render_template("feedback.html", form=form, feedback=feedback, update=True)  
