@@ -24,4 +24,10 @@
     <input type="submit" class="btn btn-primary" value="Submit">
 </form>
 
+{% if update %}
+    <form method="POST" action="/feedback/{{ feedback.id }}/delete">
+        <button type="submit" class="btn btn-danger">Delete Feedback</button>
+    </form>
+{% endif %}
+
 {% endblock %}
