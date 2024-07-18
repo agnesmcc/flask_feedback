@@ -9,6 +9,7 @@
 <p>{{ user.first_name }}</p>
 <p>{{ user.last_name }}</p>
 
+<a href="/users/{{ user.username }}/feedback/add" class="btn btn-primary">Add Feedback</a>
 <form method="POST" action="/users/{{ user.username }}/delete">
     <button type="submit" class="btn btn-danger">Delete User</button>
 </form>

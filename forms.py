@@ -20,3 +20,8 @@ class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     password = StringField('Password', validators=[DataRequired()], render_kw={"type": "password"})
     
+class FeedbackForm(FlaskForm):
+    """Feedback form."""
+
+    title = StringField('Title', validators=[DataRequired()])
+    content = StringField('Content', validators=[DataRequired()])
